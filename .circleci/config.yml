@@ -19,8 +19,6 @@ workflows:
 jobs:
   build:
     working_directory: ~/ExampleApplication2
-    cache_key: &cache_key cg-front-end-{{ .Branch }}-{{ checksum “package-lock.json” }}
-    dist_key: &dist_key cg-front-end-dist-{{ .Revision }}
     docker:
       - image: circleci/node:10.16.3
     steps:
