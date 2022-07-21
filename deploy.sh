@@ -20,7 +20,7 @@ echo $PRIVATE_KEY > privatekey.pem
 
 echo $SERVER > server.cert
 
-docker cp ./privatekey.pem node_app:/privatekey.setup_remote_docker
+docker cp ./privatekey.pem node_app:/privatekey.pem 
 
 docker cp ./server.crt node_app:/server.crt
 
