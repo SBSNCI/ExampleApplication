@@ -14,13 +14,13 @@ then
   docker rm node_app
 fi
 
-docker create -p 8443:8443 --name node_app $IMAGE_NAME
+docker create -p 8444:8444 --name node_app $IMAGE_NAME
 
 echo $PRIVATE_KEY > privatekey.pem
 
 echo $SERVER > server.cert
 
-docker cp ./privatekey.pem node_app:/privatekey.pem 
+docker cp ./privatekey.pem node_app:/privatekey.pem
 
 docker cp ./server.crt node_app:/server.crt
 
