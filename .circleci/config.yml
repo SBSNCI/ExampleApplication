@@ -30,8 +30,12 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json"}}
       - run:
-          name: install-npm
+          name: install-npm-wee
           command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json"}}
+          paths:
+            - ./node_modules
       - run:
           name: test-run
           command: npm run test
@@ -56,10 +60,6 @@ jobs:
       - run:
           name: start-docker-container
           command: docker start integration_app
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json"}}
-          paths:
-            - ./node_modules
       - run:
           name: docker-login
           command: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
